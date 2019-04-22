@@ -4,7 +4,9 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ScrollView;
@@ -52,8 +54,23 @@ public class GroupChatActivity extends AppCompatActivity {
         groupChatTextDisplay = findViewById(R.id.groupChatTextDisplay);
         messageInput = findViewById(R.id.messageInput);
         sendMessage = findViewById(R.id.sendMessage);
+
+        sendMessage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String message = messageInput.getText().toString();
+                if(TextUtils.isEmpty(message)){
+                    sendMessageToFirebase();
+                }
+            }
+        });
         
         getUserInfo();
+    }
+
+    private void sendMessageToFirebase() {
+
+
     }
 
     private void getUserInfo() {
