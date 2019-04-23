@@ -75,6 +75,7 @@ public class SettingsActivity extends AppCompatActivity {
                     Toast.makeText(SettingsActivity.this, "welcome", Toast.LENGTH_SHORT).show();
                 }else {
                     Toast.makeText(SettingsActivity.this, "please set & update your profile information...", Toast.LENGTH_SHORT).show();
+                    userStatus.setText("hey, i am available now");
                 }
             }
 

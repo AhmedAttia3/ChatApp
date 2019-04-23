@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.eaststar.chatapp.PhoneLoginActivity;
 import com.eaststar.chatapp.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -55,7 +56,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
+        phone_login_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(LoginActivity.this, PhoneLoginActivity.class);
+                startActivity(i);
+            }
+        });
     }
 
     private void LogInUser() {
