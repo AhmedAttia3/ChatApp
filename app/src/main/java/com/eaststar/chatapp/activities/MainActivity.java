@@ -2,13 +2,13 @@ package com.eaststar.chatapp.activities;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import com.google.android.material.tabs.TabLayout;
+import androidx.viewpager.widget.ViewPager;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -75,7 +75,8 @@ public class MainActivity extends AppCompatActivity {
         super.onOptionsItemSelected(item);
         int id = item.getItemId();
         if(id ==R.id.findFriendsOption){
-
+            Intent i = new Intent(MainActivity.this,FindFriendsActivity.class);
+            startActivity(i);
         }
         if(id ==R.id.settingsOption){
             Intent i = new Intent(MainActivity.this,SettingsActivity.class);
@@ -148,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if((dataSnapshot.child("name").exists())){
-                    Toast.makeText(MainActivity.this, "welcome", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(MainActivity.this, "welcome", Toast.LENGTH_SHORT).show();
                 }else {
                     Intent i = new Intent(MainActivity.this,SettingsActivity.class);
                     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        >
+        <com.mikhaellopez.circularimageview.CircularImageView
+            android:id="@+id/userImage"
+            android:src="@drawable/profile_image"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:civ_border_color="#EEEEEE"
+            app:civ_border_width="4dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginRight="10dp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/onlineImage"
+                android:layout_alignParentLeft="true"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/online"
+                android:layout_marginTop="5dp"
+                android:visibility="gone"/>
+            <TextView
+                android:id="@+id/userName"
+                android:textSize="19sp"
+                android:textStyle="bold"
+                tools:text="Ahmed Attia"
+                android:gravity="left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/onlineImage"
+                android:layout_marginLeft="5dp"
+                />
+
+            <TextView
+                android:id="@+id/userStatus"
+                android:layout_below="@+id/userName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Ahmed Attia"
+                android:layout_marginTop="8dp"
+                android:layout_marginLeft="5dp"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?android:attr/selectableItemBackground" />
+</RelativeLayout>
