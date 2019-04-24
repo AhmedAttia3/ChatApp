@@ -29,7 +29,7 @@ public class ProfileActivity extends AppCompatActivity {
     Button sedMessage, cancelMessage;
     FirebaseAuth mAuth;
 
-    DatabaseReference UserRef, ChatRequestRef, ContactstRequestRef;
+    DatabaseReference UserRef, ChatRequestRef, ContactsRequestRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ public class ProfileActivity extends AppCompatActivity {
         currentUserID = mAuth.getCurrentUser().getUid();
         UserRef = FirebaseDatabase.getInstance().getReference().child("Users");
         ChatRequestRef = FirebaseDatabase.getInstance().getReference().child("Chat Requests");
-        ContactstRequestRef = FirebaseDatabase.getInstance().getReference().child("Contacts");
+        ContactsRequestRef = FirebaseDatabase.getInstance().getReference().child("Contacts");
 
         userImage = findViewById(R.id.userImage);
         userName = findViewById(R.id.userName);
@@ -105,7 +105,7 @@ public class ProfileActivity extends AppCompatActivity {
                     }
 
                 } else {
-                    ContactstRequestRef.child(currentUserID).addListenerForSingleValueEvent(new ValueEventListener() {
+                    ContactsRequestRef.child(currentUserID).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             if (dataSnapshot.hasChild(userID)) {
@@ -151,13 +151,13 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void RemoveSpecificContacts() {
-        ContactstRequestRef.child(currentUserID).child(userID)
+        ContactsRequestRef.child(currentUserID).child(userID)
                 .removeValue()
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            ContactstRequestRef.child(userID).child(currentUserID)
+                            ContactsRequestRef.child(userID).child(currentUserID)
                                     .removeValue()
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
@@ -176,12 +176,12 @@ public class ProfileActivity extends AppCompatActivity {
     }
 
     private void AcceptChatRequest() {
-        ContactstRequestRef.child(currentUserID).child(userID).child("Contacts").setValue("saved")
+        ContactsRequestRef.child(currentUserID).child(userID).child("Contacts").setValue("saved")
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            ContactstRequestRef.child(userID).child(currentUserID).child("Contacts").setValue("saved")
+                            ContactsRequestRef.child(userID).child(currentUserID).child("Contacts").setValue("saved")
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
